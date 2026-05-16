@@ -1,4 +1,4 @@
-# Task 1 — Environment Setup and Database Creation
+Environment Setup and Database Creation
 
 ## Objective
 The objective of this task is to set up the PHP development environment using XAMPP, create a MySQL database, and establish a database connection for the PHP CRUD application.
