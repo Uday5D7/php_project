@@ -8,29 +8,56 @@ $sql = "SELECT * FROM users
 WHERE username='$username'";
 $result = mysqli_query($conn,$sql);
 $user = mysqli_fetch_assoc($result);
-if(password_verify(
+$stmt = $conn->prepare(
+"SELECT * FROM users
+WHERE username=?"
+);
+$stmt->bind_param(
+"s",
+$username
+);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = mysqli_fetch_assoc($result);
+if($user &&
+password_verify(
 $password,
 $user['password']
 )){
-$_SESSION['user']=$username;
-header("Location:dashboard.php");
+$_SESSION['user']
+= $user['username'];
+$_SESSION['role']
+= $user['role'];
+header("Location: dashboard.php");
 }else{
-echo "Invalid Password";
+echo "Invalid Username or Password";
 }
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet"
+href="style.css">
+</head>
+<body>
+<div class="container">
+<h1>User Login</h1>
 <form method="POST">
 <input type="text"
 name="username"
-placeholder="Username">
-<br><br>
+placeholder="Enter Username"
+required>
 <input type="password"
 name="password"
-placeholder="Password">
-<br><br>
-<button name="login">
+placeholder="Enter Password"
+required>
+<button type="submit"
+name="login">
 Login
 </button>
 </form>
-<link rel="stylesheet"
-href="style.css">
+</div>
+</body>
+</html>

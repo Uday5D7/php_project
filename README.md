@@ -1,42 +1,33 @@
-# Task 3 — Advanced Features Implementation
+# Task 4 – Security Enhancement Module
 
-## Objective
-The objective of this task is to enhance the PHP CRUD application by implementing advanced features such as search functionality, pagination, and improved user interface design.
+This task focuses on improving the security, authentication, and protection mechanisms of the SmartBlog Pro web application.
 
----
-
-# Features Implemented
-
-- Search functionality
-- Pagination
-- CSS styling
-- Responsive user interface
-- Bootstrap integration
+The application is enhanced with advanced security techniques to protect user data, authentication sessions, and database operations from vulnerabilities and unauthorized access.
 
 ---
 
-# Technologies Used
+# Objectives
 
-- PHP
-- MySQL
-- HTML
-- CSS
-- Bootstrap
+- Secure user authentication
+- Protect passwords using hashing
+- Prevent unauthorized access
+- Improve session security
+- Validate user inputs
+- Protect database operations
+- Enhance overall application security
 
 ---
 
-# Project Structure
+# Security Features Implemented
 
-```text
-blog/
-│
-├── index.php
-├── style.css
-├── db.php
-├── create.php
-├── edit.php
-├── delete.php
+## 1. Password Hashing
 
-URL :
+Passwords are encrypted using PHP password hashing.
 
-http://localhost/blog/dashboard.php
+### Example
+
+```php
+$password = password_hash(
+$_POST['password'],
+PASSWORD_DEFAULT
+);
