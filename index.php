@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+include 'auth.php';
 $search = "";
 $limit = 5;
 $page = isset($_GET['page'])
@@ -14,7 +15,6 @@ $search = $_GET['search'];
 $sql = "SELECT * FROM posts
 WHERE title LIKE '%$search%'
 OR content LIKE '%$search%'";
-
 $result = mysqli_query($conn,$sql);
 ?>
 <link rel="stylesheet" href="style.css">

@@ -1,6 +1,6 @@
 <?php
-include 'auth.php';
 include 'db.php';
+include 'auth.php';
 if(isset($_POST['save'])){
 $title=$_POST['title'];
 $content=$_POST['content'];
